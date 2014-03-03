@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>PACMAN</title>
+	<meta charset="utf-8" />
+	<LINK REL=StyleSheet HREF="estilos.css" TYPE="text/css" MEDIA=screen>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+
+<body>
+ 
+<div>
+	<p>Coordenada X<input type=text id="equis" value="1" />	</p>	
+	<p>Coordenada Y<input type=text id="ygriega" value="1" /></p>			
+
+	<p>Fantasma X<input type=text id="fx" value="5" />	</p>	
+	<p>Fantasma Y<input type=text id="fy" value="5" /></p>	
+</div> 
+  
+ <div id="tablero">
+	<div id="pac">
+	    <img id="derechab" src="img/pac-1B.png" />
+		<img id="arribab" src="img/pac-2B.png" />
+		<img id="izquierdab" src="img/pac-3B.png" />
+		<img id="abajob" src="img/pac-4B.png" />
+		<img id="cerradob" src="img/pac-0B.png" />
+		<img id="derecha" src="img/pac-1.png" />
+		<img id="arriba" src="img/pac-2.png" />
+		<img id="izquierda" src="img/pac-3.png" />
+		<img id="abajo" src="img/pac-4.png" />
+		<img id="cerrado" src="img/pac-0.png" />
+
+	</div>
+	
+	<div id="ghost">
+		<img id="fantasma0" src="img/ghost0.gif" />
+		<img id="fantasma" src="img/ghost.gif" />
+
+	</div>
+	
+
+</div>
+
+<p>Puntuación:<input type=text id="puntuacion"  /></p>		
+
+<input type="button" id="moneda" value="INSERT COIN" />
+
+</body>
+</html>
+

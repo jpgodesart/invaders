@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+#tablero{
+	width: 10em;
+	height: 10em;
+	border: 3px blue ridge;
+	position: relative;
+}
+
+#arriba, #abajo, #cerrado, #izquierda{
+	opacity:0;
+}
+#arribab, #abajob, #cerradob, #izquierdab{
+	opacity:0;
+}
+
+#pac{
+	position: absolute;
+}
+
+#ghost{
+	position: absolute;
+	top: 3em;
+	left: 3em;
+}
+
+img{
+	width: 1em;
+	height: 1em;
+	position: absolute;
+}
+
+
+.obstat{
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	background-color: grey;
+	z-index: -1;
+}
+
+.pastilla{
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	text-align: center;
+	z-index: -1;
+}
+
+.premio{
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	text-align: center;
+	color: red;
+	z-index: -1;
+}
+
+
+
