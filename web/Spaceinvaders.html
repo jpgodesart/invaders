@@ -2,20 +2,22 @@
 
 <html>
     <head>
-        <title>PACMAN</title>
+        <title>INVADERS</title>
         <meta charset="utf-8" />
         <LINK REL=StyleSheet HREF="invaders.css" TYPE="text/css" MEDIA=screen>
 
     </head>
     <body>
         <div>
-        <p>Coordenada X<input type=text id="equis" value="1" />	</p>	
-	<p>Coordenada Y<input type=text id="ygriega" value="1" /></p>	
+        <p>NAVE X<input type=text id="equis" value="1" />	</p>	
+	<p>DISPARO Y<input type=text id="ygriega" value="1" /></p>	
 			
 	<p>invader X<input type=text id="fx" value="0" /></p>	
 	<p>invader Y<input type=text id="fy" value="0" /></p>
         <p>aleat<input type=text id="aleat" value="0" /></p>
-        <p>pantalla<input type=text id="pantalla" value="0" /></p>
+         <p>bajo<input type=text id="bajo" value="0" /></p>
+         <p>contdisparo<input type=text id="dis" value="0" /></p>
+
 </div> 
         
         
@@ -26,7 +28,10 @@
             <img src="img/invader1.png" />
             <img src="img/invader1.png" />
 	</div>
+        <div id="disparo"><img src="img/disparo.png"/>
+        </div>
         <div id="nave">
+
             <img src="img/ship.png" />   
         </div>
             

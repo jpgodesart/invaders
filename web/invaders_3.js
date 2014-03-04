@@ -1,5 +1,8 @@
 var x= 0;
-var y=19;
+var y=0;
+var dx=0;
+var dy=19;
+var contdisparo=19;
 var xg = 0;
 var yg = 0;
 var mueve = 1; //esta variable es la que permite que se mueva el fantasma o lo deja quieto
@@ -9,16 +12,17 @@ var cohete = 0;
 var aux;
 var pantalla = 0;
 var aleat = 3;
-var nave = 0;
+var disparo = 0;
 var habilitado=false;
+var bajo=0;
 
 
 
 	function comprueba(){	//Creamos esta funci�n para comprobar si PACMAN y el fantasma han coincidido, y ver 
 							//qui�n come a qui�n
 			
-			if (x==xg && y==yg) {
-				if (nave==0) {
+			if (dx==xg && dy==yg) {
+				if (disparo==0) {
 					habilitado=false;
 					mueve=1;
 					if (juego){  //as� consigo que SOLO me salga el cartel de perdido una vez
@@ -32,7 +36,7 @@ var habilitado=false;
 					yg=5;
 					$("#invader").animate({"top":"4em","left":"4em"},2000);
 					$('#puntuacion').val(puntos+=1000);
-					nave=0;
+					disparo=0;
 					$('#invader').animate({opacity:1},2500);
 					//$('.obstat').css( {"background-color":"grey"});
 				}
@@ -56,7 +60,7 @@ var habilitado=false;
 function mover_invader() {
 
     	if (mueve==0) {
-            if(pantalla <=72){
+            if(bajo <=16){
 		
 			//generamos un n�mero aleatorio entero entre 0 y 4
 		//aleat = Math.round(aleat);	//ya que el fantasma solo puede ir hacia arriba, hacia abajo, hacia la derecha o hacia la izquierda
@@ -120,7 +124,7 @@ function mover_invader() {
 			case 1:	//Si el n�mero aleatorio es 1 movemos el fantasma hacia abajo
 				
 				aux=yg+1;
-				if (aux < 2){
+				if (aux < 20){
 
 						$("#invader").animate({"top":"+=1em"},100);	
 						yg+=1;
@@ -128,13 +132,17 @@ function mover_invader() {
 
 						comprueba();
 
-
+                                        bajo++;
+                                        $('#bajo').val(bajo);
 					aux=yg;
+                                        if(bajo==yg){
+                                            aleat=2;
+                                        }
 				}
 
 				else{
 					aux=yg;
-                                        yg=0;
+                                        //yg=0;
                                         aleat=2;
                                         $('#aleat').val(aleat);
 					mover_invader();
@@ -144,51 +152,36 @@ function mover_invader() {
 			case 4:	//Si el n�mero aleatorio es 1 movemos el fantasma hacia abajo
 				
 				aux=yg+1;
-				if (aux < 2){
+				if (aux < 20){
 
 						$("#invader").animate({"top":"+=1em"},100);	
 						yg+=1;
 						$('#fy').val(yg);
 
 						comprueba();
-
-
+                                        bajo++;
+                                        $('#bajo').val(bajo);
 					aux=yg;
+                                        if(bajo==yg){
+                                            aleat=3;
+                                        }
+                                        
 				}
 
 				else{
 					aux=yg;
-                                        yg=0;
+                                        //yg=0;
                                         aleat = 3;
                                         $('#aleat').val(aleat);
 					mover_invader();
 				}
 			break;                        
 				
-			default:/*	//en cualquier otro caso (solo puede ser cero) lo movemos hacia arriba
-			
-				aux=yg-1;
-				if (aux > 1){
-
-						$("#invader").animate({"top":"-=1em"},100);
-						yg-=1;
-						$('#fy').val(yg);
-
-						comprueba();
-					
-
-					aux=yg;
-				}
-		
-				else{
-					aux=yg;
-					mover_invader();
-				}*/
 
 			}
-                  $('#pantalla').val(pantalla);
-                  pantalla++;
-        }//iiiif
+        }else{
+            alert("Has perdido!!");
+        }
 	          
                   
 		}
@@ -228,13 +221,14 @@ $(document).ready(function() { //Esta es la parte gruesa del interfaz
 		
 		case 100: //pulsamos 'D'
 		
-			if ( x < 19)	//Si no nos salimos del tablero
+			if ( x < 18)	//Si no nos salimos del tablero
 				{
 					
 
 							habilitado=false;
 							$('#nave').animate({"left":"+=1em"},500,function(){habilitado=true;});
-
+                                                        if(dy == 19)
+                                                        $('#disparo').animate({"left":"+=1em"},500,function(){habilitado=true;});
 							
 
 							x +=1; //actualizamos variables
@@ -251,7 +245,9 @@ $(document).ready(function() { //Esta es la parte gruesa del interfaz
 				{
 
 							habilitado=false;
-							$('#nave').animate({"left":"-=1em"},500,function(){habilitado=true;});							
+							$('#nave').animate({"left":"-=1em"},500,function(){habilitado=true;});
+                                                        if(dy == 19)
+                                                        $('#disparo').animate({"left":"-=1em"},500,function(){habilitado=true;});
 							x -=1;
 							$('#equis').val(x);
 
@@ -261,7 +257,29 @@ $(document).ready(function() { //Esta es la parte gruesa del interfaz
 						
 		break;
 						
+		
+		case 119: //pulsamos 'W'
+
+                                        while(contdisparo >= 1){
+							if(dy>= 1){
+							habilitado=false;
+							$('#disparo').animate({"top":"-=1em"},500,function(){habilitado=true;});							
+							dy -=1;
+							$('#ygriega').val(dy);
+                                                        
+                                                        }
+                                                        $('#dis').val(contdisparo); 
+                                                        contdisparo--;
+                                                         
+                                        }
+                                        
+							//$('#'+x+'-'+y+'a').hide();
+                    
+                    		
+		break;
+						
 		}
+  
 	
 		
 	});
