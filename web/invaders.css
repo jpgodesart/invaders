@@ -5,6 +5,7 @@
 	height: 20em;
 	border: 3px blue ridge;
 	position: relative;
+        background: black;
 }
 
 #invader{
@@ -17,5 +18,10 @@ img{
 	width: 1em;
 	height: 1em;
 	position: relative;
+}
+#nave{
+	position: absolute;
+        top:19em;
+        left:0em;
 }
 
